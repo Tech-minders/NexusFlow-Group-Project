@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Element } from "react-scroll";
 import Navbar from "./components/NavBar/Navbar";
 import Herosection from "./components/HeroSection/Herosection";
 import Services from "./components/OurServices/Services";
@@ -9,9 +10,15 @@ function Homepage() {
   return (
     <div className="bg-gray-50 w-full">
       <Navbar />
-      <Herosection />
-      <Services />
-      <About />
+      <Element name="herosection">
+        <Herosection />
+      </Element>
+      <Element name="services">
+        <Services />
+      </Element>
+      <Element name="about">
+        <About />
+      </Element>
       <Footer />
     </div>
   );

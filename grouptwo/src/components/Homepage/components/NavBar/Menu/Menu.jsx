@@ -1,21 +1,49 @@
+import { Link } from "react-scroll";
 function Menu() {
   return (
-    <div>
+    <nav>
       <ul className="flex justify-center gap-5 font-medium text-gray-700">
         <li className="hover:text-green-500 hover:text-xl active:opacity-90">
-          <a href="#">Features</a>
+          <Link
+            to="herosection"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="cursor-pointer"
+          >
+            Home
+          </Link>
+        </li>
+        <li className="hover:text-green-500 hover:text-xl active:opacity-90">
+          <Link
+            to="services"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="cursor-pointer"
+          >
+            Features
+          </Link>
         </li>
         <li className="hover:text-green-500 hover:text-xl active:opacity-90">
           <a href="#">Pricing</a>
         </li>
         <li className="hover:text-green-500 hover:text-xl active:opacity-90">
-          <a href="#">About</a>
+          <Link
+            to="about"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="cursor-pointer"
+          >
+            About
+          </Link>
         </li>
         <li className="hover:text-green-500 hover:text-xl active:opacity-90">
           <a href="#">Contact</a>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
 export default Menu;
