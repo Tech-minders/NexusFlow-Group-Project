@@ -1,8 +1,10 @@
+import Signup from "./components/Signup";
+
 function SignUp() {
   return (
     <div>
-      <h1>SignUp Coming Soon</h1>
-    </div>
+      <Signup/>
+       </div>
   );
 }
 export default SignUp;
