@@ -1,16 +1,11 @@
-import { useState } from "react";
 import Homepage from "./components/Homepage";
-import Dashboard from "./components/Dashboard";
-import LogIn from "./components/LogIn";
-import Subscription from "./components/Subscription";
+
+import Subscription from "./components/Subscription/index.jsx";
 
 function App() {
   return (
     <div>
-      <Homepage />
-      <Dashboard />
-      <LogIn />
-      <Subscription />
+      <Subscription/>
     </div>
   );
 }
