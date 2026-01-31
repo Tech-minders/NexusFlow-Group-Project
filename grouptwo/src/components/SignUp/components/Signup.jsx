@@ -44,7 +44,6 @@ function Signup() {
         <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Sign Up</h2>
           <form onSubmit={handleSubmit}>
-            
             {/* Email Input Field */}
             <div className="mb-4">
               <label
