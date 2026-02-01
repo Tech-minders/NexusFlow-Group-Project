@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Element } from "react-scroll";
 import Navbar from "./components/NavBar/Navbar";
 import Herosection from "./components/HeroSection/Herosection";
