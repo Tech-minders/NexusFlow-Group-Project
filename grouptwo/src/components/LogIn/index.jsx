@@ -1,8 +1,8 @@
 import Login from "./components/Login";
-function LogIn() {
+function LogIn({ users }) {
   return (
     <div>
-      <Login/>
+      <Login users={users} />
     </div>
   );
 }
