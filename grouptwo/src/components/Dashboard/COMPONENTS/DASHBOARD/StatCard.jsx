@@ -10,7 +10,7 @@ const icons = {
 
 function StatCard  ({ title, value })  {
   return (
-    <div className="flex-1 bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg rounded-xl p-6 flex items-center gap-4 hover:scale-105 transform transition duration-300">
+    <div className="flex-1 bg-gradient-to-r from-green-500 to-indigo-500 text-white shadow-lg rounded-xl p-6 flex items-center gap-4 hover:scale-105 transform transition duration-300">
       <div className="p-3 bg-white bg-opacity-20 rounded-full">
         {icons[title]}
       </div>

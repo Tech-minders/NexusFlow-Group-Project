@@ -4,6 +4,7 @@ import Sidebar from "./COMPONENTS/SideBar/SideBar";
 import WelcomeSection from "./COMPONENTS/DASHBOARD/WelcomeSection";
 import StatsSection from "./COMPONENTS/DASHBOARD/StatsSection";
 import ServicesSection from "./COMPONENTS/DASHBOARD/ServicesSection";
+import Subscription from "../Subscription";
 
 function Dashboard() {
   const [activeNav, setActiveNav] = useState("dashboard");
@@ -19,7 +20,6 @@ function Dashboard() {
           <h1 className="text-2xl font-semibold text-gray-900">
             {activeNav.charAt(0).toUpperCase() + activeNav.slice(1)}
           </h1>
- 
         </header>
 
         {/* Main content */}
@@ -31,11 +31,7 @@ function Dashboard() {
               <ServicesSection />
             </>
           )}
-          {activeNav !== "dashboard" && (
-            <p className="text-gray-600">
-              Content for "{activeNav}" will go here.
-            </p>
-          )}
+          {activeNav !== "dashboard" && <Subscription />}
         </div>
       </main>
     </div>
