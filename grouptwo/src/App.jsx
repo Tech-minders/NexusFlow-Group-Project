@@ -1,11 +1,17 @@
 import Homepage from "./components/Homepage";
-
-import Subscription from "./components/Subscription/index.jsx";
+import Dashboard from "./components/Dashboard";
+import LogIn from "./components/LogIn";
+import Subscription from "./components/Subscription";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
     <div>
-      <Subscription/>
+      <Homepage />
+      <Dashboard />
+      <LogIn />
+      <SignUp />
+      <Subscription />
     </div>
   );
 }
