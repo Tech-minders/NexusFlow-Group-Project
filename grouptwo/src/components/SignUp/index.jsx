@@ -1,10 +1,10 @@
 import Signup from "./components/Signup";
 
-function SignUp() {
+function SignUp({users, setUsers}) {
   return (
     <div>
-      <Signup/>
-       </div>
+      <Signup users={users} setUsers={setUsers}/>
+    </div>
   );
 }
 export default SignUp;

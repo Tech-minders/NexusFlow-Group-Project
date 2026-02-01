@@ -1,118 +1,128 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Signup() {
-  {
-    // State for form inputs
-    const [formData, setFormData] = useState({
-      username: "",
-      email: "",
-      password: "",
-      confirmpassword: "",
-    });
-    // Optional state for errors / password visibility
-    const [error, setError] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+function Signup({ users, setUsers }) {
+  //hook to navigate to another route
+  const navigate = useNavigate();
 
-    // Handle input changes
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    };
-    // Handle form submission
-    const handleSubmit = (e) => {
-      e.preventDefault();
+  //state to store form input values
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-      // Simple validation
-      if (formData.password !== formData.confirmpassword) {
-        setError("Passwords do not match");
-        return;
-      }
-      setError(""); // clear errors
+  //State to set error message and success message
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-      // Placeholder for API call
-      console.log("Form submitted:", formData);
+  //Function to handle input field changes dynamically
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    //Use call back to update the changed field while keeping the previous data intact
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  //function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); //prevent page refresh
 
-      // Optional: redirect after signup
-      // navigate('/login');
-    };
+    // Validate password
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    //Check if the email already exists in the users array
+    const userExists = users.some((user) => user.email === formData.email);
 
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-          <h2 className="text-2xl font-bold mb-6 text-gray-800">Sign Up</h2>
-          <form onSubmit={handleSubmit}>
-            {/* Email Input Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-gray-700 text-sm font-semibold mb-2"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+    if (userExists) {
+      setError("User already exists");
+      return;
+    }
 
-            {/* Password Input Field */}
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-gray-700 text-sm font-semibold mb-2"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+    // Add new user to the users array
+    setUsers([
+      ...users,
+      { email: formData.email, password: formData.password },
+    ]);
 
-            {/* Confirm Password Input Field */}
-            <div className="mb-6">
-              <label
-                htmlFor="confirmPassword"
-                className="block text-gray-700 text-sm font-semibold mb-2"
-              >
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required
-              />
-            </div>
+    //clear errors and show success message
+    setError("");
+    setSuccess("Sign up successful! Redirecting to login...");
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    //Redirect user to log in page after 1.5 seconds
+    setTimeout(() => {
+      navigate("/login", {
+        state: { message: "Please log in to continue" },
+      });
+    }, 1500);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex flex-col justify-center items-center mb-5">
+        <h1 className="font-bold text-gray-800 text-2xl">
+          Welcome to NexusFLow
+        </h1>
+        <p className="text-gray-500 text-sm">Sign up to Access Premium Tools from One Dashboard</p>
+      </div>
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+        <h1 className="text-2xl font-bold mb-4 text-center">Sign Up</h1>
+
+        {error && <p className="text-red-500 mb-3">{error}</p>}
+        {success && <p className="text-green-600 mb-3">{success}</p>}
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full mb-3 px-3 py-2 border rounded"
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className="w-full mb-3 px-3 py-2 border rounded"
+          />
+
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            required
+            className="w-full mb-4 px-3 py-2 border rounded"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-green-500 text-white py-2 rounded hover:opacity-80"
+          >
+            Sign Up
+          </button>
+        </form>
+        <div className="flex justify-center items-center mt-5">
+          <p className="text-gray-700">
+            Have an Account?{" "}
+            <strong
+              className="cursor-pointer hover:text-green-500"
+              onClick={() => navigate("/login")}
             >
-              Sign Up
-            </button>
-          </form>
+              Log In
+            </strong>
+          </p>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Signup;
