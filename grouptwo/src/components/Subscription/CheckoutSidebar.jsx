@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-/**
- * CheckoutSidebar Component
- * Props:
- * - isOpen: Boolean to show/hide the sidebar
- * - product: Object containing name, id, etc.
- * - plan: Object containing selected plan type and price
- * - onClose: Function to close the sidebar
- * - onPay: Function to update the main app state once payment is successful
+/*
+CheckoutSidebar Component
+ Props:
+ isOpen: Boolean to show/hide the sidebar
+ product: Object containing name, id, etc.
+ plan: Object containing selected plan type and price
+ onClose: Function to close the sidebar
+ onPay: Function to update the main app state once payment is successful
  */
 function CheckoutSidebar({ isOpen, product, plan, onClose, onPay }) {
   // State to track the payment flow: 'idle' (ready), 'processing' (loading), or 'success'
