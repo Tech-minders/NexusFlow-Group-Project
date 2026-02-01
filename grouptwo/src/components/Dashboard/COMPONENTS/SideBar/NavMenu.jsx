@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useState } from "react";
-import { Home, CreditCard, Settings } from "lucide-react";
+import { Home, CreditCard,  } from "lucide-react";
 import NavItem from "./NavItem";
 
 function NavMenu({ activeNav, setActiveNav }) {
@@ -10,7 +10,7 @@ function NavMenu({ activeNav, setActiveNav }) {
       <div className="space-y-2">
         <NavItem label="Dashboard" icon={Home} value="dashboard" activeNav={activeNav} setActiveNav={setActiveNav} />
         <NavItem label="My Subscriptions" icon={CreditCard} value="subscriptions" activeNav={activeNav} setActiveNav={setActiveNav} />
-        <NavItem label="Settings" icon={Settings} value="settings" activeNav={activeNav} setActiveNav={setActiveNav} />
+        {/* <NavItem label="Settings" icon={Settings} value="settings" activeNav={activeNav} setActiveNav={setActiveNav} /> */}
       </div>
     </nav>
   );
