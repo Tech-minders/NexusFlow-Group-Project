@@ -3,6 +3,7 @@ import Homepage from "./components/Homepage";
 import Dashboard from "./components/Dashboard";
 import LogIn from "./components/LogIn";
 import Subscription from "./components/Subscription";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Homepage />
       <Dashboard />
       <LogIn />
+      <SignUp />
       <Subscription />
     </div>
   );
